@@ -1,0 +1,88 @@
+/* apple-ivy.css – Minimalistisches UI im Stil von Apple / Jony Ive */
+
+:root {
+  --primary: #007aff;
+  --bg: #f9f9f9;
+  --text: #1c1c1e;
+  --accent: #e5e5ea;
+  --radius: 12px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --font: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+textarea, input[type="text"] {
+  font-family: var(--font);
+  width: 100%;
+  max-width: 480px;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 1rem;
+  background-color: white;
+  color: var(--text);
+}
+
+button {
+  font-family: var(--font);
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--primary);
+  color: white;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  margin: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #005ecb;
+}
+
+#moodIndicator {
+  height: 4px;
+  width: 100%;
+  max-width: 480px;
+  margin-top: 1rem;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.mood.happy { background-color: #34c759; }
+.mood.thinking { background-color: #ffcc00; }
+.mood.error { background-color: #ff3b30; }
+
+footer {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #8e8e93;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+  button {
+    width: 100%;
+    max-width: 480px;
+  }
+}
