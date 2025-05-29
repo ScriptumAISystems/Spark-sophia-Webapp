@@ -1,74 +1,46 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scriptum Operator Dashboard</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 2rem;
-      background: #f3f4f6;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-    .dashboard {
-      background: white;
-      padding: 2rem 3rem;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      max-width: 500px;
-      width: 100%;
-      text-align: center;
-    }
-    .dashboard h1 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      color: #111827;
-    }
-    .status {
-      margin-bottom: 1.5rem;
-      text-align: left;
-    }
-    .status p {
-      font-size: 1.1rem;
-      margin: 0.5rem 0;
-      color: #374151;
-    }
-    .progress-bar {
-      background: #e5e7eb;
-      border-radius: 10px;
-      overflow: hidden;
-      height: 20px;
-    }
-    .progress-bar-inner {
-      background: linear-gradient(to right, #10b981, #059669);
-      width: 75%;
-      height: 100%;
-      transition: width 0.5s ease-in-out;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spark Sophia – Scriptum AI Systems</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Optionales Favicon (kleines Spark‑Icon als Inline‑SVG) -->
+    <link rel="icon" type="image/svg+xml"
+          href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='50,5 61,39 98,39 67,61 78,95 50,75 22,95 33,61 2,39 39,39' fill='%23ff6600'/></svg>">
 </head>
 <body>
-  <div class="dashboard">
-    <h1>Scriptum Operator Dashboard</h1>
-    <div class="status">
-      <p><strong>Status:</strong> YAML korrigiert ✅</p>
-      <p><strong>Fortschritt:</strong> <span id="progress-text">75%</span></p>
-      <p><strong>Nächster Schritt:</strong> Operator-Reset um 9:00 Uhr</p>
-    </div>
-    <div class="progress-bar">
-      <div class="progress-bar-inner" id="progress-bar"></div>
-    </div>
-  </div>
-  <script>
-    // Für spätere Dynamik vorbereitet
-    const progress = 75;
-    document.getElementById('progress-text').innerText = progress + '%';
-    document.getElementById('progress-bar').style.width = progress + '%';
-  </script>
+    <main class="container">
+        <h1>Willkommen bei Spark Sophia – Scriptum AI Systems</h1>
+
+        <!-- Eingabebereich -->
+        <div class="chat-box">
+            <textarea id="userInput" placeholder="Stell deine Frage …" rows="3"></textarea>
+            <button id="sendBtn">Senden</button>
+        </div>
+
+        <!-- Antwortbereich -->
+        <div id="response" class="response hidden"></div>
+
+        <!-- Stimmungsanzeige -->
+        <div class="mood-section">
+            <div id="moodIndicator" class="mood happy"></div>
+
+            <div class="mood-buttons">
+                <button data-mood="happy">Glücklich</button>
+                <button data-mood="thinking">Nachdenklich</button>
+                <button data-mood="error">Störung</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2025 Scriptum AI Systems
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
