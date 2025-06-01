@@ -1,0 +1,36 @@
+name: Export Icons
+
+on:
+  workflow_dispatch:
+    inputs:
+      icon:
+        description: 'Pfad zur Master-Icon-Datei (SVG)'
+        required: true
+        default: 'icon-master.svg'
+
+jobs:
+  export:
+    name: Icon Export
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Tools
+        run: |
+          sudo apt update
+          sudo apt install -y librsvg2-bin pngquant imagemagick git
+
+      - name: Run Export Script
+        run: |
+          chmod +x scripts/export-icons.sh
+          scripts/export-icons.sh ${{ github.event.inputs.icon }}
+
+      - name: Commit Exported Icons
+        run: |
+          git config --global user.name "Spark Operator"
+          git config --global user.email "operator@sophia.ai"
+          git add frontend/public/assets/
+          git commit -m "feat(assets): auto-exported icon set via CI" || echo "No changes to commit"
+          git push origin HEAD
