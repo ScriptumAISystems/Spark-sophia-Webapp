@@ -6,7 +6,9 @@ on:
       icon:
         description: 'Pfad zur Master-Icon-Datei (SVG)'
         required: true
-        default: 'icon-master.svg'
+        
+      permissions:
+    contents: write
 
 jobs:
   export:
