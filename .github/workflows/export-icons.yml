@@ -7,9 +7,10 @@ on:
         description: 'Pfad zur Master-Icon-Datei (SVG)'
         required: true
         
-      permissions:
-    contents: write
+      
 
+permissions:
+    conte nts:write
 jobs:
   export:
     name: Icon Export
