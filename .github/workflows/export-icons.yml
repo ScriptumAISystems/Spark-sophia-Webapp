@@ -10,7 +10,7 @@ on:
       
 
 permissions:
-    conte nts:write
+    contnts: write
 jobs:
   export:
     name: Icon Export
