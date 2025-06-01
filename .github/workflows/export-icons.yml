@@ -10,7 +10,7 @@ on:
       
 
 permissions:
-    contnts: write
+    contents: write
 jobs:
   export:
     name: Icon Export
