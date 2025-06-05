@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const responseBox   = document.getElementById('response');
     const moodIndicator = document.getElementById('moodIndicator');
     const moodButtons   = document.querySelectorAll('.mood-buttons button');
+let currentMood = null;
 
     /* Tipp-Animation (optional) */
     function typeText(element, text, speed = 30) {
@@ -22,20 +23,32 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!query) return;                 // Leere Eingabe ignorieren
         responseBox.classList.remove('hidden');
 
-        // Dummy-Antwort
-        const answer = 'Ich bin bereit, Christian.';
-
-        // Tipp-Animation starten
+       try {
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer testtoken'
+            },
+            body: JSON.stringify({ question: query, mood: currentMood })
+        });
+        const data = await res.json();
+        const answer = data.answer || 'Keine Antwort erhalten.';
         typeText(responseBox, answer);
+    } catch (err) {
+        typeText(responseBox, 'Fehler beim Abruf der Antwort.');
+    }
+
+    userInput.value = '';
 
         userInput.value = '';
     });
 
     /* Stimmungsknöpfe */
     moodButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const mood = btn.dataset.mood;          // happy | thinking | error
-            moodIndicator.className = `mood ${mood}`;
+       const mood = btn.dataset.mood; // happy | thinking | error
+    currentMood = mood;
+    moodIndicator.className = 'mood ' + mood;moodIndica
         });
     });
 });
