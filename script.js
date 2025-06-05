@@ -35,6 +35,12 @@ let currentMood = null;
         const data = await res.json();
         const answer = data.answer || 'Keine Antwort erhalten.';
         typeText(responseBox, answer);
+                       // Text-to-Speech
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(answer);
+                utter.lang = 'de-DE';
+                speechSynthesis.speak(utter);
+            }
     } catch (err) {
         typeText(responseBox, 'Fehler beim Abruf der Antwort.');
     }
